@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: hermes-gateway
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: MISTRAL_API_KEY
+        sync: false   # you will fill this in Render dashboard
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false   # you will fill this in Render dashboard

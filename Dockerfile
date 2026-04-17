@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy config template and start script
+COPY config.template.yaml .
+COPY start.sh .
+RUN chmod +x start.sh
+
+# Expose port for UptimeRobot pinger (keeps Render awake)
+EXPOSE 8080
+
+CMD ["./start.sh"]
