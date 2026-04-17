@@ -1,17 +1,15 @@
 FROM python:3.11-slim
 
+# 1. Install gettext-base (provides envsubst)
+RUN apt-get update && apt-get install -y gettext-base && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy config template and start script
-COPY config.template.yaml .
-COPY start.sh .
-RUN chmod +x start.sh
+COPY . .
 
-# Expose port for UptimeRobot pinger (keeps Render awake)
-EXPOSE 8080
+RUN chmod +x start.sh
 
 CMD ["./start.sh"]
