@@ -86,4 +86,4 @@ Send `/model` in Telegram to your bot (if Hermes supports it), or change
 - 512 MB RAM — enough for hermes gateway (no local inference)
 - 0.1 CPU — fine for API-only usage
 - Sleeps without UptimeRobot pinger (that's why Step 4 matters)
-# HermesAgent121
+
